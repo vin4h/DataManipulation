@@ -8,12 +8,16 @@ class Operation:
         self.db.connect()
         query = "CREATE TABLE IF NOT EXISTS product (id SERIAL PRIMARY KEY, name VARCHAR(100), price FLOAT, country VARCHAR(30))"
         self.db.execute(query)
-        print("Tabela criada com sucesso!")
+        print("Tabela product criada com sucesso!")
         self.db.disconnect()
         
     def create_product_formatted_table(self):
         self.db.connect()
-        query = "CREATE TABLE IF NOT EXIST product_formatted (id SERIAL PRIMARY KEY, id_product int, converted_price_brl float, converted_price_usd float, converted_price_eur float, quote_brl float, quote_usd float, quote_eur float)"
+        query = "CREATE TABLE IF NOT EXISTS product_formatted (id SERIAL PRIMARY KEY, id_product int, converted_price_brl float, converted_price_usd float, converted_price_eur float, quote_brl float, quote_usd float, quote_eur float)"
+        self.db.execute(query)
+        print("Tabela product_formatted criada com sucesso!")
+        self.db.disconnect()
+        
         
     def insert_product_table(self, name: str, price: float, country: str):
         try:
