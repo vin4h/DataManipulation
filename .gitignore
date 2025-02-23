@@ -1,2 +1,10 @@
+# Ignorar o arquivo .env
 .env
+
+# Ignorar as pastas __pycache__ específicas
+product/__pycache__/
+database/__pycache__/
+third_party_api/__pycache__/
+
+# Ignorar todos os arquivos .pyc em qualquer pasta
 **/*.pyc
