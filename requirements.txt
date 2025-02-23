@@ -1,0 +1,3 @@
+postgres==4.0
+psycopg==3.2.5
+python-dotenv==1.0.1

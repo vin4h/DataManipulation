@@ -1,0 +1,40 @@
+from dotenv import load_dotenv
+
+import os
+import psycopg
+
+class DatabaseConnection: 
+    def __init__(self):
+        load_dotenv()
+        self.connection = None
+        self.cursor = None
+        self.database_name = os.getenv('DB_NAME')
+        self.database_user = os.getenv('DB_USER')
+        self.database_password = os.getenv('DB_PASSWORD')
+    
+    def connect(self):
+        try:
+            self.connection = psycopg.connect(
+                "dbname=teste user=postgres password='postgres#clicka' host=localhost port=5432"
+            )
+            self.cursor = self.connection.cursor()
+        except Exception as e:
+            print(f"Erro ao conectar ao banco: {e}")
+
+    def disconnect(self):
+        if self.cursor:
+            self.cursor.close()
+        if self.connection:
+            self.connection.close()
+    
+    def execute(self, query):
+        try:
+            self.cursor.execute(query)
+            self.connection.commit()
+        except Exception as e:
+            print(f"Erro ao executar a query: {e}")
+            self.connection.rollback()
+            
+    def commit(self):
+        if self.connection:
+            self.connection.commit()
