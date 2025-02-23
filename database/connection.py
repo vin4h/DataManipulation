@@ -15,7 +15,11 @@ class DatabaseConnection:
     def connect(self):
         try:
             self.connection = psycopg.connect(
-                "dbname=teste user=postgres password='postgres#clicka' host=localhost port=5432",
+                dbname=self.database_name,
+                user=self.database_user,
+                password=self.database_password,
+                host='localhost',
+                port=5432,
                 row_factory=psycopg.rows.dict_row
             )
             self.cursor = self.connection.cursor()
