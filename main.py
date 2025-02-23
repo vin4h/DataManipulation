@@ -13,6 +13,8 @@ class Main:
         
         if len(count) == 0: #restricted to creating new 100 rows in the database
             self.product.data_load()
+
+        self.product.formatted_product()
         
     
 

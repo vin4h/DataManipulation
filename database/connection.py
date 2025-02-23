@@ -15,7 +15,8 @@ class DatabaseConnection:
     def connect(self):
         try:
             self.connection = psycopg.connect(
-                "dbname=teste user=postgres password='postgres#clicka' host=localhost port=5432"
+                "dbname=teste user=postgres password='postgres#clicka' host=localhost port=5432",
+                row_factory=psycopg.rows.dict_row
             )
             self.cursor = self.connection.cursor()
         except Exception as e:
@@ -30,7 +31,6 @@ class DatabaseConnection:
     def execute(self, query):
         try:
             self.cursor.execute(query)
-            self.connection.commit()
         except Exception as e:
             print(f"Error to execute query: {e}")
             self.connection.rollback()

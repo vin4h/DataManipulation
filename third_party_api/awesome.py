@@ -23,18 +23,17 @@ class AwesomeApi:
         
     
     def get_all_quote(self):
-        coins = f"{self.usd_brl_coin}, {self.usd_eur_coin}, {self.eur_brl_coin}, {self.eur_usd_coin}, {self.brl_usd_coin}, {self.brl_eur_coin}"
+        coins = f"{self.usd_brl_coin},{self.usd_eur_coin},{self.eur_brl_coin},{self.eur_usd_coin},{self.brl_usd_coin},{self.brl_eur_coin}"
         
         headers = {
             "x-api-key": self.api_key
         }
-        
-        response = requests.get(f"{self.base_url}/{coins}", headers=headers).json()
+
+        response = requests.get(f"{self.base_url}/{coins}", headers=headers)
         
         if response.status_code == 200:
-       
            return response.json()
         else:
-            print(f"Error get quote: {response.status_code}")
+            print(f"Error get quote: {response}")
             
             return {}
