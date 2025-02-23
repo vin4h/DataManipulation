@@ -7,7 +7,8 @@ class Main:
         self.product = Product()
     
     def start(self):
-        self.operation.createProductTable()
+        self.operation.create_product_table()
+        self.operation.create_product_formatted_table()
         self.product.data_load()
         
     
