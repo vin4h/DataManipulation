@@ -9,7 +9,10 @@ class Main:
     def start(self):
         self.operation.create_product_table()
         self.operation.create_product_formatted_table()
-        self.product.data_load()
+        count = self.operation.get_all()
+        
+        if len(count) == 0: #restricted to creating new 100 rows in the database
+            self.product.data_load()
         
     
 

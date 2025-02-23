@@ -19,7 +19,7 @@ class DatabaseConnection:
             )
             self.cursor = self.connection.cursor()
         except Exception as e:
-            print(f"Erro ao conectar ao banco: {e}")
+            print(f"Error to connect in database: {e}")
 
     def disconnect(self):
         if self.cursor:
@@ -32,9 +32,12 @@ class DatabaseConnection:
             self.cursor.execute(query)
             self.connection.commit()
         except Exception as e:
-            print(f"Erro ao executar a query: {e}")
+            print(f"Error to execute query: {e}")
             self.connection.rollback()
             
     def commit(self):
         if self.connection:
             self.connection.commit()
+            
+    def fetch_all(self):
+        return self.cursor.fetchall()
