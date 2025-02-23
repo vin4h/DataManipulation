@@ -77,7 +77,7 @@ class Product:
                     quote_eur = float(current_quotes[self.usd_eur_response]['bid'])
                     quote_brl = float(current_quotes[self.usd_brl_response]['bid'])
                     converted_price_brl = price * quote_brl
-                    converted_price_eur = price / quote_eur
+                    converted_price_eur = price * quote_eur
               
                     product_formatted = self.format_product_data(id, converted_price_brl, price, converted_price_eur,  quote_brl, quote_usd, quote_eur)
                     
